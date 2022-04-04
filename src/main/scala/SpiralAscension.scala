@@ -1,15 +1,15 @@
 import scala.collection.mutable.ArrayBuffer
 
 object SpiralAscension extends App {
-  printSpiral(createSpiral(5))
+  printSpiral(createSpiral(10))
 
   def printSpiral(spiral: Seq[Seq[Int]]): Unit = {
+    val maxLength = (spiral.size * spiral.size).toString.length
     spiral.foreach(row => {
-      val rowString = row.map(slot => f"$slot%3d").mkString(" ")
+      val rowString = row.map(slot => s"%1$$${maxLength}d".format(slot)).mkString(" ")
       println(rowString)
     })
   }
-
 
   def createSpiral(n: Int): Seq[Seq[Int]] = {
     val startX = if (n % 2 == 0) n/ 2 else (1 - n) / 2
@@ -24,7 +24,7 @@ object SpiralAscension extends App {
       }
     reversedMatrix.map(_.reverse).reverse
   }
-  
+
   def  spiralIndex(x: Int, y: Int): Int = {
     if (y * y >= x * x) {
       val index = 4 * y * y - y - x
