@@ -18,10 +18,10 @@ object SpiralAscension extends App {
     val endY = if (n % 2 == 0) n/ 2 + 1 else (1 - n) / 2 - 1
     val dx = if (n % 2 == 0) -1 else 1
     val dy = if (n % 2 == 0) 1 else -1
-    val reversedMatrix = for (y <- startY until endY by dy) yield
-      for (x <- startX until endX by dx) yield {
-        n * n - spiralIndex(x, y)
-      }
+    val reversedMatrix =
+      for (y <- startY until endY by dy) yield
+        for (x <- startX until endX by dx) yield
+          n * n - spiralIndex(x, y)
     reversedMatrix.map(_.reverse).reverse
   }
 
