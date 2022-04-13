@@ -1,5 +1,3 @@
-import scala.collection.mutable.ArrayBuffer
-
 object SpiralAscension extends App {
   printSpiral(createSpiral(3))
 
@@ -12,10 +10,10 @@ object SpiralAscension extends App {
   }
 
   def createSpiral(size: Int): List[List[Int]] = {
-    def spiralHelper(numberLines: Int, lineLength: Int, start: Int): List[List[Int]] = {
-      if (numberLines == 0) Nil else {
+    def spiralHelper(numberRows: Int, lineLength: Int, start: Int): List[List[Int]] = {
+      if (numberRows == 0) Nil else {
         (start until start + lineLength).toList ::
-        spiralHelper(lineLength, numberLines - 1, start + lineLength).reverse.transpose
+        spiralHelper(lineLength, numberRows - 1, start + lineLength).reverse.transpose
       }
     }
 
