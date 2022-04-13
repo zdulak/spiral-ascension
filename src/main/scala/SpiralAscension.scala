@@ -1,5 +1,5 @@
 object SpiralAscension extends App {
-  printSpiral(createSpiral(3))
+  printSpiral(createSpiral(5))
 
   def printSpiral(spiral: Seq[Seq[Int]]): Unit = {
     val maxLength = (spiral.size * spiral.size).toString.length
@@ -11,7 +11,7 @@ object SpiralAscension extends App {
 
   def createSpiral(size: Int): List[List[Int]] = {
     def spiralHelper(numberRows: Int, lineLength: Int, start: Int): List[List[Int]] = {
-      if (numberRows == 0) Nil else {
+      if (numberRows == 0 || lineLength == 0) Nil else {
         (start until start + lineLength).toList ::
         spiralHelper(lineLength, numberRows - 1, start + lineLength).reverse.transpose
       }
